@@ -7,3 +7,26 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+user_1 = User.find_or_create_by!(first_name: "Alora", last_name: "Coolgirl", email: "bubblybubble@yahoo.com")
+user_2 = User.find_or_create_by!(first_name: "Zach", last_name: "Smoothguy", email: "spacemarines@hotmail.com")
+user_3 = User.find_or_create_by!(first_name: "Ellen", last_name: "Frizzle", email: "caligirl@gmail.com")
+user_4 = User.find_or_create_by!(first_name: "Brian", last_name: "Nowak", email: "spanishiscool@gmail.com")
+
+schedule_1 = Schedule.find_or_create_by!(title: "Thursday", date: "2023-06-08", user_id: user_1.id)
+schedule_2 = Schedule.find_or_create_by!(title: "Friday", date: "2023-06-09", user_id: user_1.id)
+schedule_3 = Schedule.find_or_create_by!(title: "Saturday", date: "2023-06-10", user_id: user_1.id)
+
+show_1 = Show.find_or_create_by!(artist: "Baby Keem", location: "Porto Main Stage", show_time: "2023-06-08 21:00")
+show_2 = Show.find_or_create_by!(artist: "Baby Keem", location: "Porto Main Stage", show_time: "2023-06-08 21:00")
+show_3 = Show.find_or_create_by!(artist: "Kendrick Lamar", location: "Porto Main Stage", show_time: "2023-06-08 22:30")
+show_4 = Show.find_or_create_by!(artist: "The Comet is Coming", location: "Over the Hill", show_time: "2023-06-08 23:00")
+show_5 = Show.find_or_create_by!(artist: "Two Shell", location: "Over the Hill", show_time: "2023-06-09 01:00")
+show_6 = Show.find_or_create_by!(artist: "Rosalia", location: "Porto Main Stage", show_time: "2023-06-09 00:30")
+show_7 = Show.find_or_create_by!(artist: "Fred Again", location: "Over the Hill", show_time: "2023-06-09 23:00")
+show_8 = Show.find_or_create_by!(artist: "Alvvays", location: "Super Bock", show_time: "2023-06-09 19:30")
+show_9 = Show.find_or_create_by!(artist: "Bad Religion", location: "Super Bock", show_time: "2023-06-09 00:30")
+show_10 = Show.find_or_create_by!(artist: "Halsey", location: "Porto Main Stage", show_time: "2023-06-10 22:00")
+show_11 = Show.find_or_create_by!(artist: "Blur", location: "Porto Main Stage", show_time: "2023-06-10 00:00")
+show_12 = Show.find_or_create_by!(artist: "Built to Spill", location: "Over the Hill", show_time: "2023-06-10 21:00")
+show_13 = Show.find_or_create_by!(artist: "New Order", location: "Over the Hill", show_time: "2023-06-10 23:00")
