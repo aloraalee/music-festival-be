@@ -10,12 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_01_20_194740) do
+ActiveRecord::Schema[7.1].define(version: 2025_01_20_195957) do
   create_table "schedules", force: :cascade do |t|
     t.string "title"
     t.date "date"
     t.string "references"
     t.string "user"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "shows", force: :cascade do |t|
+    t.string "artist"
+    t.string "location"
+    t.datetime "show_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
