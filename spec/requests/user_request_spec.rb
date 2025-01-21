@@ -60,3 +60,4 @@ RSpec.describe "Users", type: :request do
       expect(json[:data][0][:attributes]).to have_key(:email)
     end
   end
+end
