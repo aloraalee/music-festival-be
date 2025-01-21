@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :schedule do
-    title { "MyString" }
+    title { Faker::Lorem.unique.word }
     date { "2025-01-20" }
     user { nil }
   end

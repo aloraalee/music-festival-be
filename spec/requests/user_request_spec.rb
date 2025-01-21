@@ -37,13 +37,13 @@ RSpec.describe "Users", type: :request do
     @schedule_3.shows << @show_2
     @schedule_3.shows << @show_3
 
-    @schedule4.shows << @show_4
-    @schedule4.shows << @show_5
-    @schedule4.shows << @show_6
-    @schedule4.shows << @show_7
-    @schedule4.shows << @show_8
+    @schedule_4.shows << @show_4
+    @schedule_4.shows << @show_5
+    @schedule_4.shows << @show_6
+    @schedule_4.shows << @show_7
+    @schedule_4.shows << @show_8
 
-    @schedule5.shows << @show_3
+    @schedule_5.shows << @show_3
   end
 
   describe "Get All Users Endpoint" do
