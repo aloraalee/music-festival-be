@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_01_20_201429) do
-  create_table "schedule_items", force: :cascade do |t|
+ActiveRecord::Schema[7.1].define(version: 2025_01_21_040316) do
+  create_table "schedule_shows", force: :cascade do |t|
     t.integer "schedule_id", null: false
     t.integer "show_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["schedule_id"], name: "index_schedule_items_on_schedule_id"
-    t.index ["show_id"], name: "index_schedule_items_on_show_id"
+    t.index ["schedule_id"], name: "index_schedule_shows_on_schedule_id"
+    t.index ["show_id"], name: "index_schedule_shows_on_show_id"
   end
 
   create_table "schedules", force: :cascade do |t|
@@ -45,7 +45,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_01_20_201429) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "schedule_items", "schedules"
-  add_foreign_key "schedule_items", "shows"
+  add_foreign_key "schedule_shows", "schedules"
+  add_foreign_key "schedule_shows", "shows"
   add_foreign_key "schedules", "users"
 end
