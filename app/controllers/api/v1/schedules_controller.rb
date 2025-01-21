@@ -3,4 +3,5 @@ class Api::V1::SchedulesController < ApplicationController
     schedules = Schedule.all 
     render json: ScheduleSerializer.new(schedules), status: :ok
   end
+
 end

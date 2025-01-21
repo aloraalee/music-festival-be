@@ -56,6 +56,42 @@ RSpec.describe "Schedules", type: :request do
       expect(json[:data].count).to eq(5)
       expect(json[:data][0][:attributes]).to have_key(:title)
       expect(json[:data][0][:attributes]).to have_key(:date)
+      expect(json[:data][0][:attributes]).to have_key(:user_id)
     end
+  end
+
+    it "should return all shows for a given schedule" do
+      get "/api/v1/schedules/#{@schedule_1.id}/shows"
+
+      json = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response).to be_successful
+      expect(json[:data].count).to eq(3)
+      expect(json[:data][0][:id]).to eq(@show_1.id.to_s)
+      expect(json[:data][1][:id]).to eq(@show_2.id.to_s)
+      expect(json[:data][2][:id]).to eq(@show_3.id.to_s)
+    end
+
+    it "should return all show details for a given schedule" do
+      get "/api/v1/schedules/#{@schedule_1.id}/shows"
+
+      json = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response).to be_successful
+      expect(json[:data].count).to eq(3)
+      expect(json[:data][0][:attributes]).to have_key(:artist)
+      expect(json[:data][0][:attributes]).to have_key(:location)
+      expect(json[:data][0][:attributes]).to have_key(:show_time)
+    end
+
+  xit "should return 404 and error message when schedule is not found" do
+    get "/api/v1/schedules/100000"
+
+    json = JSON.parse(response.body, symbolize_names: true)
+
+    expect(response).to have_http_status(:not_found)
+    expect(json[:message]).to eq("Your query could not be completed")
+    expect(json[:errors]).to be_a Array
+    expect(json[:errors].first).to eq("Couldn't find Schedule with 'id'=100000")
   end
 end
