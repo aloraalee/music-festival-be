@@ -5,8 +5,12 @@ class Api::V1::SchedulesController < ApplicationController
   end
 
   def show
-    schedule = Schedule.find(params[:id])  
-    render json: ScheduleSerializer.new(schedule, include: ['shows']).serializable_hash 
+    schedule = Schedule.find_by(id: params[:id])  
+    if schedule
+      render json: ScheduleSerializer.new(schedule, include: ['shows']).serializable_hash 
+    else
+      render json: { error: "Schedule not found" }, status: :not_found
+    end
   end
 
   private

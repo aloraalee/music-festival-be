@@ -86,10 +86,7 @@ RSpec.describe "Schedules", type: :request do
     get "/api/v1/schedules/100000"
 
     json = JSON.parse(response.body, symbolize_names: true)
-
     expect(response).to have_http_status(:not_found)
-    expect(json[:message]).to eq("Your query could not be completed")
-    expect(json[:errors]).to be_a Array
-    expect(json[:errors].first).to eq("Couldn't find Schedule with 'id'=100000")
+    expect(json[:error]).to eq("Schedule not found")
   end
 end
