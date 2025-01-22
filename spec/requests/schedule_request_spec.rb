@@ -73,7 +73,7 @@ RSpec.describe "Schedules", type: :request do
     end
 
     xit "should return all show details for a given schedule" do
-      get "/api/v1/schedules/#{@schedule_1.id}/shows"
+      get "/api/v1/schedules/#{@schedule_1.id}"
 
       json = JSON.parse(response.body, symbolize_names: true)
 

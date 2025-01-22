@@ -5,8 +5,8 @@ class Api::V1::SchedulesController < ApplicationController
   end
 
   def show
-    schedule = Schedule.find(params[:id])  # Find the schedule by id
-    render json: ScheduleSerializer.new(schedule, include: ['shows']).serializable_hash  # Include associated shows in the response
+    schedule = Schedule.find(params[:id])  
+    render json: ScheduleSerializer.new(schedule, include: ['shows']).serializable_hash 
   end
 
   # def show
