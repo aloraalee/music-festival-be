@@ -65,26 +65,24 @@ RSpec.describe "Schedules", type: :request do
 
       expect(response).to be_successful
       json = JSON.parse(response.body, symbolize_names: true)
-      # binding.pry
       expect(json[:data][:relationships][:shows][:data].count).to eq(3)
       expect(json[:data][:relationships][:shows][:data][0][:id]).to eq(@show_1.id.to_s)
       expect(json[:data][:relationships][:shows][:data][1][:id]).to eq(@show_2.id.to_s)
       expect(json[:data][:relationships][:shows][:data][2][:id]).to eq(@show_3.id.to_s)
     end
 
-    xit "should return all show details for a given schedule" do
+    it "should return all show details for a given schedule" do
       get "/api/v1/schedules/#{@schedule_1.id}"
 
       json = JSON.parse(response.body, symbolize_names: true)
 
       expect(response).to be_successful
-      expect(json[:data].count).to eq(3)
-      expect(json[:data][0][:attributes]).to have_key(:artist)
-      expect(json[:data][0][:attributes]).to have_key(:location)
-      expect(json[:data][0][:attributes]).to have_key(:show_time)
+      expect(json[:included][0][:attributes]).to have_key(:artist)
+      expect(json[:included][0][:attributes]).to have_key(:location)
+      expect(json[:included][0][:attributes]).to have_key(:show_time)
     end
 
-  xit "should return 404 and error message when schedule is not found" do
+  it "should return 404 and error message when schedule is not found" do
     get "/api/v1/schedules/100000"
 
     json = JSON.parse(response.body, symbolize_names: true)
