@@ -104,5 +104,31 @@ RSpec.describe "Schedules", type: :request do
       expect(json[:message]).to eq("Show removed from schedule")
       expect(@schedule_4.shows).not_to include(@show_8)
     end
+
+    it "should return 404 and error message when show cannot be found" do
+      expect(@schedule_4.shows).to include(@show_8)
+      expect(Show.count).to eq(10)
+
+      delete "/api/v1/schedules/#{@schedule_4.id}/remove_show/1000000"
+
+      json = JSON.parse(response.body, symbolize_names: true)
+
+      json = JSON.parse(response.body, symbolize_names: true)
+      expect(response).to have_http_status(:not_found)
+      expect(json[:error]).to eq("Schedule or show not found")
+    end
+
+    it "should return 404 and error message when schedule cannot be found" do
+      expect(@schedule_4.shows).to include(@show_8)
+      expect(Show.count).to eq(10)
+
+      delete "/api/v1/schedules/999999/remove_show/#{@show_8.id}"
+
+      json = JSON.parse(response.body, symbolize_names: true)
+
+      json = JSON.parse(response.body, symbolize_names: true)
+      expect(response).to have_http_status(:not_found)
+      expect(json[:error]).to eq("Schedule or show not found")
+    end
   end
 end

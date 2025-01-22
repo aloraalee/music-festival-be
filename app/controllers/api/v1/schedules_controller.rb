@@ -20,7 +20,7 @@ class Api::V1::SchedulesController < ApplicationController
       schedule.shows.delete(show)
       render json: { message: "Show removed from schedule" }, status: :ok
     else
-      render json: { error: "Schedule or Show not found" }, status: :not_found
+      render json: { error: "Schedule or show not found" }, status: :not_found
     end
   end
 end
