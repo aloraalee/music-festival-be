@@ -13,9 +13,14 @@ class Api::V1::SchedulesController < ApplicationController
     end
   end
 
-  private
-
-  def schedule_params
-    params.permit(:title, :date)
+  def destroy
+    schedule = Schedule.find_by(id: params[:schedule_id])
+    show = Show.find_by(id: params[:show_id])
+    if schedule && show
+      schedule.shows.delete(show)
+      render json: { message: "Show removed from schedule" }, status: :ok
+    else
+      render json: { error: "Schedule or Show not found" }, status: :not_found
+    end
   end
 end
