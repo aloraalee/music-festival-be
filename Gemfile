@@ -75,3 +75,5 @@ group :test do
 end
 
 gem 'jsonapi-serializer'
+
+gem 'rack-cors'
