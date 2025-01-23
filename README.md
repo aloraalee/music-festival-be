@@ -1,24 +1,41 @@
-# README
+# Music Festival Schedule Service Backend
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Description
+This Rails API serves as the backend for the Music Festival Schedule Service. It provides endpoints for managing music festival schedules, shows, and users.
 
-Things you may want to cover:
+## Ruby and Rails versions
+- Ruby 3.1.1
+- Rails 7.0.4
 
-* Ruby version
+## System dependencies
+- PostgreSQL
 
-* System dependencies
+## BE Installation
+1. Clone the BE repository: https://github.com/aloraalee/music-festival-be.git
+2. Navigate to the project directory
+3. Set up the database: 
+### `rails db:create db:migrate db:seed`
+## Usage
+To start the server:
+### `rails s`
 
-* Configuration
+## FE Installation
+1. Clone the FE repository: https://github.com/aloraalee/music-festival-fe.git
+2. Navigate to the project directory:
+## Usage
+### `npm start`
 
-* Database creation
+The API will be available at `http://localhost:3000`.
 
-* Database initialization
+## API Endpoints
+- GET /api/v1/schedules - Retrieve all festival schedules
+- GET /api/v1/schedules/:id - Get detailed information about a specific schedule, including associated shows and users
+- DELETE /api/v1/schedules/:schedule_id/remove_shows/:show_id - Remove a show from a specific schedule
 
-* How to run the test suite
+## Database Structure
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+## Testing
+This project uses RSpec for testing. To run the tests:
+### `bundle exec rspec`
 
-* ...
